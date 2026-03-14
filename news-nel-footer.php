@@ -2,7 +2,7 @@
 /*
 Plugin Name: News nel Footer
 Description: Slider offerte automatico categoria offerte
-Version: 1.2
+Version: 1.3
 Author: Alessandro Isoardi
 */
 
@@ -77,8 +77,8 @@ function nnf_shortcode($atts) {
                                 <?php the_title(); ?>
                             </div>
 
-                            <div class="nnf-author">
-                                Di <?php the_author(); ?>
+                            <div class="nnf-date">
+                                <?php echo esc_html(get_the_date('d/m/Y')); ?>
                             </div>
 
                         </div>
@@ -157,7 +157,7 @@ function nnf_style() {
             display: flex;
             align-items: center;
             gap: 12px;
-            flex: 0 0 calc((100% - 16px) / 2);
+            flex: 0 0 calc((100% - 32px) / 3);
             min-width: 0;
             text-decoration: none;
             color: #000;
@@ -192,7 +192,7 @@ function nnf_style() {
             word-break: break-word;
         }
 
-        .nnf-author {
+        .nnf-date {
             font-size: 12px;
             color: #1a3559;
             line-height: 1.1;
@@ -237,7 +237,7 @@ function nnf_style() {
                 font-size: 14px;
             }
 
-            .nnf-author {
+            .nnf-date {
                 font-size: 12px;
             }
         }
@@ -269,7 +269,7 @@ function nnf_script() {
                 var dots = [];
 
                 function cardsPerPage() {
-                    return window.matchMedia('(max-width: 768px)').matches ? 1 : 2;
+                    return window.matchMedia('(max-width: 768px)').matches ? 1 : 3;
                 }
 
                 function getPageCount() {
